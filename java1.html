@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+  
+    <style>
+#slider
+{
+    max-width: 1000%;
+    max-height:100%;
+}
+
+
+
+#slider img
+{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: -10px;
+
+
+}
+
+
+@keyframes zoom{
+    0%{transform: scale(1);}
+    100%{transform: scale(2);}
+}
+@keyframes unzoom{
+    0%{transform: scale(2);}
+    100%{transform: scale(1);}
+}
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript">
+var numer = Math.floor(Math.random()*3)+1;
+ 
+
+function schowaj()
+{
+    $("#slider").fadeOut(500);
+
+    document.getElementById("slider").style.animation = "zoom 3s ease";
+ 
+}
+
+function slider()
+{
+numer++; if(numer>3) numer = 1;
+
+var plik = "<img src=\"img/bg" + numer + ".jpg\"/>";
+
+document.getElementById("slider").innerHTML = plik;
+
+
+$("#slider").fadeIn(500);
+
+   document.getElementById("slider").style.animation = "unzoom 3s ease";
+setTimeout("slider()", 4000);
+setTimeout("schowaj()", 3500);
+}
+    </script>
+</head>
+<body onload="slider()">
+    <div id="slider">
+        <img src="img/bg1.jpg">
+        <img src="img/bg2.jpg">
+        <img src="img/bg3.jpg">
+    </div>
+</body>
+</html>
